@@ -9,61 +9,55 @@ h1{
 
 
 body{
-    display: flex;
-    flex-direction: column ;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100vw;
-    margin: 0;
-    background-size: cover;
-    background-repeat: no-repeat;
     background-image: url(./resources/soft.jpeg);
-}
-
-header{
-    background-color: rgba(245, 245, 220, 0.297);
-    width: 100%;
-    margin-top: auto;
-}
-.container > p{
-    margin-top: 5rem;
-    font-size: 50px;
-    color: #191002;
-    font-weight: bold;
-    text-align: center;
-    margin: 20px 20px;
-    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 
-
-main   
+main
  {
     text-align: center;
     
 }
+.home-header {
+    background-color: rgba(139, 69, 19, 0.7);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.home-header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #FFD700;
+}
+
+.home-header p {
+    font-size: 1.2em;
+    color: #FFF8DC;
+}
+
 .nav-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
+    margin-top: 50px;
 }
 
 .nav-item {
-    background-color:  #dbbf9d;
-    border-radius: 5px;
-    margin-top: 6rem;
-    padding: 20px;
-    text-align: center;
-    height: 225px;
-    width: 250px; 
-    margin-bottom: 5rem;
+    background-color: rgba(255, 248, 220, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 300px;
 }
 
-.nav-item a {
-    
-    color: #333;
-    display: block;
+.nav-item:hover {
+    transform: scale(1.05);
 }
 
 .nav-item img {
@@ -73,11 +67,46 @@ main  
 }
 
 
+.nav-item a {
+    
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #8B4513;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: #D2691E;
+    color: white;
+    transition: background-color 0.3s ease;
+
+}
+
+.nav-item a:hover {
+    background-color: #A0522D;
+}
+
+
+
+.home-intro {
+    background-color: rgba(255, 248, 220, 0.9);
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+
+
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #f0f0f038;
-    padding: 10px;
+    background-color: rgba(139, 69, 19, 0.8);
+    color: white;
+    padding: 15px;
     text-align: center;
 }
