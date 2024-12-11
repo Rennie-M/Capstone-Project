@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styles Class</title>
+    <link rel="stylesheet" href="./styles2.css">
+</head>
+<body>
+      <header>
+         <h1 class="header-title">Welcome To Ankara House
+          <p>Home of your preferred fabrics and clothings</p>
+         </h1>
+         
+      </header>
+       
+      <main>
+          <section class="Fabric-category">
+              <h2>Ankara Gowns</h2>
+              <div class="fabric-row">
+                  <div class="fabric-item" data-product-id="10">
+                      <img src="./resources 2/ankara gown 1.jpg" alt="Gown 1">
+                        <p>Ankara black & white ankle length gown with lace covering</p>
+                      <button class="buy-now-btn">Buy Now</button>
+                  </div>
+                  <div class="fabric-item" data-product-id="11">
+                      <img src="./resources 2/ankara gown2.jpg" alt="Gown 2">
+                      <p>Colorful Ankara gown</p>
+                      <button class="buy-now-btn">Buy Now</button>
+                  </div>
+                  <div class="fabric-item" data-product-id="12">
+                      <img src="./resources/dress.jpg" alt="Gown 3">
+                      <p>Simple ankara dress</p>
+                      <button class="buy-now-btn">Buy Now</button>
+                  </div>
+              </div>
+          </section>       
+  
+          <section class="fabric-category">
+              <h2>Two Pieces</h2>
+              <div class="fabric-row">
+                  <div class="fabric-item" data-product-id="13">
+                      <img src="./resources 2/two peice 1.jpg" alt="two piece 1">
+                      <p>Traditional two piece set</p>
+                      <button class="buy-now-btn">Buy Now</button>
+                  </div>
+                  <div class="fabric-item" data-product-id="14">
+                      <img src="./resources 2/two piece 2.jpg" alt="two piece 2">
+                      <p>Elegant two piece ensemble</p>
+                      <button class="buy-now-btn">Buy Now</button>
+                  </div>
+                  <div class="fabric-item" data-product-id="15">
+                      <img src="./resources 2/two piece 3.jpg" alt="two piece 3">
+                      <p>classic two piece outfit</p>
+                      <button class="buy-now-btn">Buy Now</button>
+                  </div>
+              </div>
+          </section>
+  
+          <section class="fabric-category">
+              <h2>Free Wears</h2>
+              <div class="fabric-row">
+                  <div class="fabric-item" data-product-id="16">
+                      <img src="./resources 2/free wear1.jpg" alt="Free wear 1">
+                      <p>casual ankara outfit</p>
+                      <button class="buy-now-btn">Buy Now</button>
+                  </div>
+                  <div class="fabric-item" data-product-id="17">
+                      <img src="./resources 2/free wear2.jpg" alt="free wear 2">
+                      <p>Relaxed ankara style</p>
+                      <button class="buy-now-btn">Buy Now</button>
+                  </div>
+                  <div class="fabric-item" data-product-id="18">
+                      <img src="./resources 2/free wear3.jpg" alt="free wear 3">
+                      <p>comfortable ankara wear</p>
+                      <button class="buy-now-btn">Buy Now</button>
+                  </div>
+              </div>
+          </section>
+  
+      </main>
+
+
+
+
+
+
+
+
+
+      <script>
+        const buyNowButtons = document.querySelectorAll('.buy-now-btn');
+        buyNowButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productId =button.closest('.fabric-item').dataset.productId;
+                window.location.href = `buyNow.html?productId=${productId}`;
+            });
+        });
+    </script>
+      
+
+
+
+
+
+
+
+
+    <footer>
+        <div class="footer-content">
+          <ul>
+            <li><a href="./Home.html">Home</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./about.html">About</a></li>
+          </ul>
+          <p>&copy; 2024 Fashion House</p>
+        </div>
+
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styles Class</title>
+    <link rel="stylesheet" href="./styles2.css">
+</head>
+<body>
+    <header>
+       <h1 class="header-title">Welcome To Ankara House
+        <p>Home of your preferred fabrics and clothings</p>
+       </h1>
+       
+    </header>
+     
+    <main>
+        <section class="fabric-category">
+            <h2>Ankara Fabrics</h2>
+            <div class="fabric-row">
+                <div class="fabric-item" data-product-id="1">
+                    <img src="./resources/fabric.jpeg" alt="Fabric 1">
+                    <p>Branch, leaf-lke print</p>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+                <div class="fabric-item" data-product-id="2">
+                    <img src="./resources/fabric 3.jpeg" alt="multi coloured fabric">
+                    <p>Multi coloured curls patterned print</p>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+                <div class="fabric-item" data-product-id="3">
+                    <img src="./resources/fabric 2.jpeg" alt="Ankara Fabric 3">
+                    <p>Spiral print</p>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+        </section>       
+
+        <section class="fabric-category">
+            <h2>Traditional African Fabrics</h2>
+            <div class="fabric-row">
+                <div class="fabric-item" data-product-id="4">
+                    <img src="./resources/Atoghu Toghu.jpeg" alt="Ankara Fabric 1">
+                    <p>Toghu Bamileke Bamenda</p>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+                <div class="fabric-item" data-product-id="5">
+                    <img src="./resources/fabric 4.jpeg" alt="Ankara Fabric 2">
+                    <p>Black Multicolored African Print</p>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+                <div class="fabric-item" data-product-id="6">
+                    <img src="./resources/fabric 5.jpeg" alt="Ankara Fabric 3">
+                    <p>Kente Fabric</p>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="fabric-category">
+            <h2>Wax Print Fabrics</h2>
+            <div class="fabric-row">
+                <div class="fabric-item" data-product-id="7">
+                    <img src="./resources/fabric 6.jpeg" alt="Ankara Fabric 1">
+                    <p>Colourful wax print</p>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+                <div class="fabric-item" data-product-id="8">
+                    <img src="./resources/fabric 7.jpeg" alt="Ankara Fabric 2">
+                    <p>Africa Wax Print-Kente Gold</p>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+                <div class="fabric-item" data-product-id="9">
+                    <img src="./resources/fabric 8.jpeg" alt="Ankara Fabric 3">
+                    <p>Grey,blue horse print</p>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+
+
+
+    <script>
+         const buyNowButtons = document.querySelectorAll('.buy-now-btn');
+        buyNowButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productId =button.closest('.fabric-item').dataset.productId;
+                window.location.href = `buyNow.html?productId=${productId}`;
+            });
+        });
+    </script>
+
+
+
+
+
+
+    <footer>
+        <div class="footer-content">
+          <ul>
+            <li><a href="./Home.html">Home</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./about.html">About</a></li>
+          </ul>
+          <p>&copy; 2024 Fashion House</p>
+        </div>
+</body>
+</html>

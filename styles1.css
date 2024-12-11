@@ -1,0 +1,83 @@
+html, body{
+    height: 100%;
+    margin:0 ;
+}
+
+h1{
+    text-align: center;
+}
+
+
+body{
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(./resources/soft.jpeg);
+}
+
+header{
+    background-color: rgba(245, 245, 220, 0.297);
+    width: 100%;
+    margin-top: auto;
+}
+.container > p{
+    margin-top: 5rem;
+    font-size: 50px;
+    color: #191002;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 20px;
+    
+}
+
+
+
+main   
+ {
+    text-align: center;
+    
+}
+.nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-item {
+    background-color:  #dbbf9d;
+    border-radius: 5px;
+    margin-top: 6rem;
+    padding: 20px;
+    text-align: center;
+    height: 225px;
+    width: 250px; 
+    margin-bottom: 5rem;
+}
+
+.nav-item a {
+    
+    color: #333;
+    display: block;
+}
+
+.nav-item img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 0;
+}
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f0f0f038;
+    padding: 10px;
+    text-align: center;
+}
