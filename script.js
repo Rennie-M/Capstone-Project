@@ -363,7 +363,7 @@ const CartManager = {
             alert('Thank you for your purchase!');
             this.clearCart();
             // Redirect to a thank you or order confirmation page
-            window.location.href = 'order-confirmation.html';
+            window.location.href = 'checkout.html';
             return true;
         }
         return false;
@@ -517,8 +517,6 @@ function checkout() {
     const confirmCheckout = confirm(`Proceed to checkout?\nTotal: ${total.toLocaleString()} CFA`);
     
     if (confirmCheckout) {
-        alert('Thank you for your purchase!');
-        clearCart();
-        window.location.href = 'order-confirmation.html';
+        window.location.href = 'checkout.html';
     }
 }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="styles5.css">
+</head>
+<body>
+    <h1>Checkout</h1>
+    <div id="cart-summary">
+        <!-- Cart items will be displayed here -->
+    </div>
+    <form id="checkout-form">
+        <h2>Shipping Information</h2>
+        <input type="text" name="fullName" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        
+        <h2>Shipping Address</h2>
+        <input type="text" name="address" placeholder="Street Address" required>
+        <input type="text" name="city" placeholder="City" required>
+        <input type="text" name="country" placeholder="Country" required>
+        
+        <h2>Payment Method</h2>
+        <select name="paymentMethod" required>
+            <option value="">Select Payment Method</option>
+            <option value="cash">Cash on Delivery</option>
+            <option value="mobile-money">Mobile Money</option>
+            <option value="bank-transfer">Bank Transfer</option>
+        </select>
+        
+        <div id="order-total"></div>
+        
+        <button type="submit" onclick="processOrder(event)">Complete Order</button>
+    </form>
+    
+    <script>
+    function displayCheckoutSummary() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const summaryContainer = document.getElementById('cart-summary');
+        const orderTotalContainer = document.getElementById('order-total');
+        
+        let total = 0;
+        let summaryHTML = '<h2>Order Summary</h2>';
+        
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            
+            summaryHTML += `
+                <div class="checkout-item">
+                    <img src="${item.image}" alt="${item.name}" width="50">
+                    <span>${item.name} - ${item.quantity} x ${item.price} CFA</span>
+                    <span>Subtotal: ${itemTotal} CFA</span>
+                </div>
+            `;
+        });
+        
+        summaryContainer.innerHTML = summaryHTML;
+        orderTotalContainer.innerHTML = `<strong>Total Order: ${total} CFA</strong>`;
+    }
+    
+    function processOrder(event) {
+        event.preventDefault();
+        // Basic validation and order processing
+        alert('Order Processed Successfully!');
+        localStorage.removeItem('cart');
+        window.location.href = 'thank-you.html';
+    }
+    
+    // Load cart summary when checkout page loads
+    window.onload = displayCheckoutSummary;
+    </script>
+</body>
+</html>
