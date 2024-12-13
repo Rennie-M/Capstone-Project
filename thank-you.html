@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Your Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        .thank-you-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .order-details {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <h1>Thank You for Your Order!</h1>
+        <p>Your order has been successfully processed.</p>
+        
+        <div id="order-confirmation" class="order-details">
+            <!-- Order details are dynamically inserted here -->
+        </div>
+
+        <button onclick="window.location.href='index.html'">Continue Shopping</button>
+    </div>
+
+    <script>
+        function displayOrderConfirmation() {
+            const lastOrder = JSON.parse(localStorage.getItem('lastOrder'));
+            const orderConfirmationContainer = document.getElementById('order-confirmation');
+
+            if (lastOrder) {
+                let orderHTML = `
+                    <h2>Order Summary</h2>
+                    <h3>Customer Information</h3>
+                    <p><strong>Name:</strong> ${lastOrder.customerInfo.fullName}</p>
+                    <p><strong>Email:</strong> ${lastOrder.customerInfo.email}</p>
+                    <p><strong>Phone:</strong> ${lastOrder.customerInfo.phone}</p>
+                    
+                    <h3>Shipping Address</h3>
+                    <p><strong>Address:</strong> ${lastOrder.customerInfo.address}</p>
+                    <p><strong>City:</strong> ${lastOrder.customerInfo.city}</p>
+                    <p><strong>Country:</strong> ${lastOrder.customerInfo.country}</p>
+                    
+                    <h3>Order Items</h3>
+                `;
+
+                lastOrder.items.forEach(item => {
+                    orderHTML += `
+                        <div>
+                            <p>${item.name} 
+                                ${item.color ? `- Color: ${item.color}` : ''} 
+                                ${item.size ? `- Size: ${item.size}` : ''} 
+                                - Quantity: ${item.quantity} 
+                                - ${item.price} CFA
+                            </p>
+                        </div>
+                    `;
+                });
+
+                orderHTML += `
+                    <h3>Total Order: ${lastOrder.total.toLocaleString()} CFA</h3>
+                `;
+
+                orderConfirmationContainer.innerHTML = orderHTML;
+
+                // Clears the last order after displaying
+                localStorage.removeItem('lastOrder');
+            } else {
+                orderConfirmationContainer.innerHTML = '<p>No recent order found.</p>';
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = displayOrderConfirmation;
+    </script>
+</body>
+</html>

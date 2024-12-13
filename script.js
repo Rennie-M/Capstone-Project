@@ -227,6 +227,8 @@ let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
 const CartManager = {
     cart: [],
     init() {
+        
+            this.loadCart();
         try {
             const savedCart = localStorage.getItem('cartItems');
             this.cart = savedCart ? JSON.parse(savedCart) : [];
@@ -253,7 +255,7 @@ const CartManager = {
         } else {
             // Add new item to cart
             const cartItem = {
-                id: products.id,
+                id: product.id,
                 name: product.name,
                 price: product.price,
                 quantity: options.quantity,
@@ -346,6 +348,9 @@ const CartManager = {
                 cartTotalElement.textContent = `Total: ${this.getCartTotal()} CFA`;
             }
         }
+    },
+    getCartTotal() {
+        return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
     },
 
     // Checkout process
@@ -486,7 +491,7 @@ function buyNow() {
 // On page load
 window.onload = function() {
     // Load existing cart from local storage
-    CartManager.loadCart();
+    CartManager.init();
 
     // If on product details page, display product details
     if (document.getElementById('product-details')) {

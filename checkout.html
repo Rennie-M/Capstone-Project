@@ -9,7 +9,7 @@
 <body>
     <h1>Checkout</h1>
     <div id="cart-summary">
-        <!-- Cart items will be displayed here -->
+        <!-- Cart items are displayed here -->
     </div>
     <form id="checkout-form">
         <h2>Shipping Information</h2>
@@ -36,41 +36,98 @@
     </form>
     
     <script>
-    function displayCheckoutSummary() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const summaryContainer = document.getElementById('cart-summary');
-        const orderTotalContainer = document.getElementById('order-total');
+        function displayCheckoutSummary() {
+            // Debug: Log raw localStorage content
+            console.log('Raw localStorage cartItems:', localStorage.getItem('cartItems'));
         
-        let total = 0;
-        let summaryHTML = '<h2>Order Summary</h2>';
+            // Directly retrieve cart from localStorage
+            const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+            console.log('Parsed cart:', cart);
         
-        cart.forEach(item => {
-            const itemTotal = item.price * item.quantity;
-            total += itemTotal;
+            const summaryContainer = document.getElementById('cart-summary');
+            const orderTotalContainer = document.getElementById('order-total');
+        
+            // Validate DOM elements
+            if (!summaryContainer || !orderTotalContainer) {
+                console.error('Cart summary or order total containers not found');
+                return;
+            }
+        
+            if (cart.length === 0) {
+                console.log('Cart is empty');
+                summaryContainer.innerHTML = '<p>No items in cart</p>';
+                orderTotalContainer.innerHTML = '<strong>Total Order: 0 CFA</strong>';
+                return;
+            }
+        
+            let total = 0;
+            let summaryHTML = '<h2>Order Summary</h2>';
             
-            summaryHTML += `
-                <div class="checkout-item">
-                    <img src="${item.image}" alt="${item.name}" width="50">
-                    <span>${item.name} - ${item.quantity} x ${item.price} CFA</span>
-                    <span>Subtotal: ${itemTotal} CFA</span>
-                </div>
-            `;
-        });
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                summaryHTML += `
+                    <div class="checkout-item">
+                        <img src="${item.image}" alt="${item.name}" width="50">
+                        <div>
+                            <p>${item.name} 
+                                ${item.color ? `- Color: ${item.color}` : ''} 
+                                ${item.size ? `- Size: ${item.size}` : ''}
+                            </p>
+                            <p>${item.quantity} x ${item.price} CFA</p>
+                            <p>Subtotal: ${itemTotal} CFA</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            summaryContainer.innerHTML = summaryHTML;
+            orderTotalContainer.innerHTML = `<strong>Total Order: ${total} CFA</strong>`;
+        }
         
-        summaryContainer.innerHTML = summaryHTML;
-        orderTotalContainer.innerHTML = `<strong>Total Order: ${total} CFA</strong>`;
-    }
-    
-    function processOrder(event) {
-        event.preventDefault();
-        // Basic validation and order processing
-        alert('Order Processed Successfully!');
-        localStorage.removeItem('cart');
-        window.location.href = 'thank-you.html';
-    }
-    
-    // Load cart summary when checkout page loads
-    window.onload = displayCheckoutSummary;
-    </script>
+        // Ensure this runs when the page loads
+        document.addEventListener('DOMContentLoaded', displayCheckoutSummary);
+        
+        function processOrder(event) {
+            event.preventDefault();
+            // Get form data
+            const form = event.target.closest('form');
+            const formData = new FormData(form);
+            
+            // Basic validation and order processing
+            for (let [key, value] of formData.entries()) {
+                if (!value) {
+                    alert(`Please fill in the ${key.replace(/([A-Z])/g, ' $1').toLowerCase()} field`);
+                    return;
+                }
+            }
+            
+            // Collect order details
+            const orderDetails = {
+                customerInfo: Object.fromEntries(formData.entries()),
+                items: JSON.parse(localStorage.getItem('cartItems')) || [],
+                total: calculateTotal()
+            };
+            
+            console.log('Order Details:', orderDetails);
+            
+            alert('Order Processed Successfully!');
+            
+            // Optional: Save order to local storage or send to backend
+            localStorage.setItem('lastOrder', JSON.stringify(orderDetails));
+            
+            // Clear cart after successful order
+            localStorage.removeItem('cartItems');
+            
+            // Redirect to thank you page
+            window.location.href = 'thank-you.html';
+        }
+        
+        function calculateTotal() {
+            const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+            return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+        </script>
 </body>
 </html>
