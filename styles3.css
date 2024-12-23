@@ -1,7 +1,7 @@
 /*styling the product display page or betteryet the buy now page*/
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #d7d7c2;
+    background-color: #d1bfab81;
     margin: 0;
     padding: 20px;
   }
@@ -55,7 +55,7 @@ body {
   /*Styling the cart page*/
   /* Cart Page Specific Styles */
 :root {
-  --primary-color: #2c3e50;
+  --primary-color: #293541;
   --secondary-color: #3498db;
   --background-color: #f4f4f4;
   --white: #ffffff;
@@ -67,7 +67,7 @@ body {
   width: 100%;
   max-width: 900px;
   margin: 30px auto;
-  background-color: #d7d7c2;
+  background-color: #d1bfab81;
   padding: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -117,7 +117,7 @@ body {
 
 .cart-item-details p {
   margin-bottom: 5px;
-  color: #666;
+  color: #2f2e2e;
 }
 
 .cart-item-details button {
@@ -136,7 +136,7 @@ body {
 }
 
 .cart-summary {
-  background-color: #f9f9f9;
+  background-color: #dadada;
   padding: 20px;
   border-radius: 8px;
   margin-top: 20px;

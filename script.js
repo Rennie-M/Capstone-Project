@@ -366,7 +366,6 @@ const CartManager = {
         if (confirmCheckout) {
             // Here you would typically integrate with payment gateway
             alert('Thank you for your purchase!');
-            this.clearCart();
             // Redirect to a thank you or order confirmation page
             window.location.href = 'checkout.html';
             return true;
